@@ -38,7 +38,7 @@ productRoute.get('/:id', asyncHandler(
 
         if (product) {
             return res.status(200).json({
-                errStatus: 'Okk',
+                errStatus: 'OK',
                 product: product
             })
         }

@@ -20,6 +20,14 @@ const userSchema = mongoose.Schema({
         require: true,
         default: false
     },
+    gender: {
+        type: String,
+        require: true
+    },
+    address: {
+        type: String,
+        require: true
+    }
 }, {
     timestamps: true
 })
@@ -37,6 +45,20 @@ userSchema.methods.compareMatchPassword = async function(comparePassword){
         throw new Error(err.message);
     }
 }
+
+/**
+ * User: Huy
+ * Usage: Register
+ */
+
+userSchema.pre("save", async function (next) { 
+    if(!this.isModified("password")) {
+        next()
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(this.password, salt)
+})
 
 const User = mongoose.model('User', userSchema)
 

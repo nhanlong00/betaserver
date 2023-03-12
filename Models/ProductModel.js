@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 
 const productSchema = mongoose.Schema({
-    name: {
+    nameProd: {
         type: String,
         require: true
     },
-    image: {
-        type: String,
+    thumbnails: {
+        type: Array,
         require: true,
         unique: true
     },
@@ -34,8 +34,33 @@ const productSchema = mongoose.Schema({
         require: true,
         default: 0
     },
+    quantity: {
+        type: Number,
+        require: true,
+        default: 0
+    },
     countInStock: {
         type: Number,
+        require: true,
+        default: 0
+    },
+    color: {
+        type: Array,
+        require: true,
+        default: 0
+    },
+    size: {
+        type: Array,
+        require: true,
+        default: 0
+    },
+    size: {
+        type: Array,
+        require: true,
+        default: 0
+    },
+    categories: {
+        type: Array,
         require: true,
         default: 0
     },
