@@ -37,10 +37,7 @@ productRoute.get('/:id', asyncHandler(
         const product = await Product.findById(req.params.id)
 
         if (product) {
-            return res.status(200).json({
-                errStatus: 'OK',
-                product: product
-            })
+            return res.json(product)
         }
     }
 ))
