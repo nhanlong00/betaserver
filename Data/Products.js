@@ -83,7 +83,7 @@ const products = [
         countInStock: 100,
         rating: 4,
         numReviews: 4,
-        size: [],
+        size: ['M', 'L'],
         color: ['Đen', 'Vàng'],
         categories: 'hat'
     },
@@ -102,7 +102,7 @@ const products = [
         countInStock: 100,
         rating: 4,
         numReviews: 4,
-        size: [],
+        size: ['M','L'],
         color: ['Be'],
         categories: 'hat'
     }
