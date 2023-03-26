@@ -11,7 +11,14 @@ const productRoute = express.Router()
 
 productRoute.get('/', asyncHandler(
     async (req, res) => {
-        const products = await Product.find({})
+        const keyword = req.params.keyword ? {
+            name: {
+                $regex: req.query.keyword,
+                $options: "i" 
+            },
+        } : {}
+
+        const products = await Product.find({...keyword})
 
         if (products) {
             return res.status(200).json({
@@ -21,7 +28,7 @@ productRoute.get('/', asyncHandler(
         } else {
             res.status(404).json({
                 errStatus: 'Error',
-                messageError: 'Product not found!'
+                messageError: 'Không tìm thấy sản phẩm ...'
             })
         }
     }
